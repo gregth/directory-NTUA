@@ -1,13 +1,10 @@
 <?php
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-  header('Content-Type: text/html; charset=utf-8');
   if ( empty( $_POST[ "school" ] ) ) {
    print "Error. Try again.";
   }
   else {
     $school = $_POST[ "school" ];
-    $file = file_get_contents( "$school.json" );
+    $file = file_get_contents( "data/$school.json" );
     $list = json_decode( $file, true );
     print '<h1>Results for school with id: ' . $school . '</h1>';
     foreach( $list as $year => $sublist ) {

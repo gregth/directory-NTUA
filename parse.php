@@ -1,10 +1,7 @@
 <?php
-  header('Content-type: text/plain; charset=utf-8');
-  error_reporting(E_ALL);
-  ini_set('display_errors', 'on');
   $base = "http://www.ntua.gr/directory.html?group=ALL&dept=ALL&q=";
   $school = $_POST[ "school" ];
-  $file = fopen( "$school.json", "w" );
+  $file = fopen( "data/$school.json", "w" );
   $entries = 0;
   $lists;
 
@@ -27,7 +24,6 @@
       $id++;
     }
   }
-  print_r( $lists );
   fwrite( $file, json_encode( $lists ) );
   fclose( $file );
   echo "Ready.";
