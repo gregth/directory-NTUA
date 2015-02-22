@@ -1,4 +1,5 @@
 <?php
+  header('Content-Type: text/html; charset=utf-8');
   if ( empty( $_POST[ "school" ] ) ) {
    print "Error. Try again.";
   }
