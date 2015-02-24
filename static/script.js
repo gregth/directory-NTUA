@@ -38,7 +38,7 @@ function get_directory( ) {
   }
   var counter = 0;
   var total = urls.length;
-  urls.forEach( function( url ) {
+  (function fetchData( url ) {
     $.get( url, function( ) {
       counter++;
       console.log( url );
@@ -48,6 +48,9 @@ function get_directory( ) {
         progress.text( "Ready!" );
         $( "#start" ).removeAttr( 'disabled' );
       }
+      else {
+        fetchData( urls[ counter ] );
+      }
     });
-  });
+  } )( urls[ 0 ] );
 }

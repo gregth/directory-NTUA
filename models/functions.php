@@ -11,14 +11,14 @@
     $base = "http://www.ntua.gr/directory.html?group=ALL&dept=ALL&q=";
     for ( $i = $start; $i <= $end; $i++ ) {
       if ( $year <= 9 ) {
-        $id = '0' .  ( $year * 1000 + $i );
+        $id = $school . '0' .  ( $year * 1000 + $i );
       }
       else {
-        $id = $year * 1000 + $i;
+        $id = $school . ( $year * 1000 + $i );
       }
-      $url = $base . $school . $id;
+      $url = $base . $id;
       $page = file_get_contents( $url );
-      preg_match_all( '/<b>([^A-Za-z]*)<\/b>/si', $page, $matches );
+      preg_match_all( '/<b>(.*?)<\/b>/si', $page, $matches );
       $counter = count( $matches[ 0 ] );
       if ( $counter == 3 ) {
         //Found name, student exists.
