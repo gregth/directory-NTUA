@@ -8,7 +8,7 @@
 <?php
   foreach ( $list as $year => $sublist ) {
 ?>
-    <h2>Year: <?php echo $year ?></h2>
+    <h2>Year: <?php echo 2000 + $year ?></h2>
     <table>
       <tbody>
 
