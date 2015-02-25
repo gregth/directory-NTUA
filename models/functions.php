@@ -10,12 +10,7 @@
     $list = prepare_directory( $school );
     $base = "http://www.ntua.gr/directory.html?group=ALL&dept=ALL&q=";
     for ( $i = $start; $i <= $end; $i++ ) {
-      if ( $year <= 9 ) {
-        $id = $school . '0' .  ( $year * 1000 + $i );
-      }
-      else {
-        $id = $school . ( $year * 1000 + $i );
-      }
+      $id = $school . str_pad(  ( $year * 1000 + $i ), 5, "0", STR_PAD_LEFT );
       $url = $base . $id;
       $page = file_get_contents( $url );
       preg_match_all( '/<b>(.*?)<\/b>/si', $page, $matches );
